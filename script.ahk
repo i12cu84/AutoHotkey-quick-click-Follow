@@ -6,12 +6,14 @@ SysGet, VirtualHeight, 3
 SysGet, VirtualWidth, 3
 
 !1::
+loop, 10
+{
 __ImageFilePath:="C:\Users\chru\Desktop\laod\Follow.png"
 gui,add,picture,hwnd__mypic,%__ImageFilePath%
 if FileExist(__ImageFilePath){
     controlgetpos,,,__img_w,__img_h,,ahk_id %__mypic%
     CoordMode Pixel
-    ImageSearch, __FoundX, __FoundY, 1400, 200, 1600, 1000,%__ImageFilePath%
+    ImageSearch, __FoundX, __FoundY, 1400, 0, 1600, 1000,%__ImageFilePath%
     CoordMode Mouse
     PicX:=__FoundX + __img_w/2
     PicY:=__FoundY + __img_h/2
@@ -29,5 +31,7 @@ if FileExist(__ImageFilePath){
     } else {
     }
 } else {
+}
+sleep 200
 }
 Return
